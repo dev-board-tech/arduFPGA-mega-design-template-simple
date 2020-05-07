@@ -1,0 +1,172 @@
+<HTML>
+<HEAD>
+<TITLE>Lattice TCL Log</TITLE>
+<link href="file:///C:/lscc/radiant/2.0/data/theme/css/light/report.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="file:///C:/lscc/radiant/2.0/data/theme/css/print/report.css" rel="stylesheet" type="text/css" media="print"/>
+<style type="text/css">
+#toc {
+  position: fixed;
+  right: 2px;
+  top: 2px;
+  padding: 2px 5px 2px 5px;
+  background-color:rgba(210,210,210,0.1);
+  border-style: solid;
+  border-color: rgba(192,192,192,0.8);
+  border-width:1px;
+}
+#toc_list {
+  display: none;
+  }
+</style>
+
+<script type="text/javascript">
+<!--
+function showTocList() {
+var a = document.getElementById("toc_list");
+a.style.display = "block";
+}
+
+function hideTocList() {
+var a = document.getElementById("toc_list");
+if (a)
+    a.style.display = "none";
+}
+
+//-->
+</script>
+
+</HEAD>
+
+<BODY>
+
+<DIV id="content" onclick="hideTocList()"><PRE>
+<A name="pn200507110731"></A><B><U><big>pn200507110731</big></U></B>
+#Start recording tcl command: 5/7/2020 10:18:53
+#Project Location: D:/GitHubDevBoard/arduFPGA-mega-design-template-simple/arduFPGA_simple_template; Project name: arduFPGA_simple_template
+prj_create -name "arduFPGA_simple_template" -impl "impl_1" -dev iCE40UP5K-SG48I -performance "High-Performance_1.2V" -synthesis "lse"
+prj_add_source "D:/GitHubDevBoard/arduFPGA-mega-design-template-simple/arduFPGA_simple_template/source/impl_1/impl_1.ldc" "D:/GitHubDevBoard/arduFPGA-mega-design-template-simple/arduFPGA_simple_template/source/impl_1/impl_1.pdc"
+prj_save 
+prj_add_source "D:/GitHubDevBoard/arduFPGA-mega-design-template-simple/arduFPGA_simple_template/source/impl_1/top.v"
+prj_add_source "D:/GitHubDevBoard/arduFPGA-mega-design-template-simple/arduFPGA_simple_template/source/impl_1/io_glue.v"
+prj_add_source "D:/GitHubDevBoard/hdl-core-mega-xmega/io-s-h.v" "D:/GitHubDevBoard/hdl-core-mega-xmega/mega-alu.v" "D:/GitHubDevBoard/hdl-core-mega-xmega/mega-core.v" "D:/GitHubDevBoard/hdl-core-mega-xmega/mega-def.v" "D:/GitHubDevBoard/hdl-core-mega-xmega/mega-ram.v" "D:/GitHubDevBoard/hdl-core-mega-xmega/mega-reg.v" "D:/GitHubDevBoard/hdl-core-mega-xmega/mega-rom.v"
+prj_add_source "D:/GitHubDevBoard/hdl-core-common/io-atmega/atmega-pio.v" "D:/GitHubDevBoard/hdl-core-common/io-atmega/atmega-rtc.v"
+prj_add_source "D:/GitHubDevBoard/hdl-core-common/util/io-dmux.v"
+prj_remove_source "D:/GitHubDevBoard/arduFPGA-mega-design-template-simple/arduFPGA_simple_template/source/impl_1/io_glue.v"
+prj_add_source "D:/GitHubDevBoard/arduFPGA-mega-design-template-simple/arduFPGA_simple_template/source/impl_1/io-glue.v"
+prj_run Map -impl impl_1
+prj_add_source "D:/GitHubDevBoard/arduFPGA-mega-design-template-simple/arduFPGA_simple_template/PLL_DEV/PLL_DEV.ipx"
+prj_run Map -impl impl_1
+#Stop recording: 5/7/2020 11:07:31
+
+
+
+<A name="pn200507184408"></A><B><U><big>pn200507184408</big></U></B>
+#Start recording tcl command: 5/7/2020 11:08:11
+#Project Location: D:/GitHubDevBoard/arduFPGA-mega-design-template-simple/arduFPGA_simple_template_design; Project name: arduFPGA_simple_template
+prj_open "D:/GitHubDevBoard/arduFPGA-mega-design-template-simple/arduFPGA_simple_template_design/arduFPGA_simple_template.rdf"
+prj_add_source "D:/GitHubDevBoard/arduFPGA-mega-design-template-simple/arduFPGA_simple_template_design/simple_app.mem"
+prj_run Map -impl impl_1
+prj_run Map -impl impl_1
+prj_set_strategy_value -strategy Strategy1 lse_ram_style=Block_RAM lse_rom_style=EBR
+prj_run Map -impl impl_1
+prj_run Map -impl impl_1
+prj_run Map -impl impl_1
+prj_run Export -impl impl_1
+launch_programmer_prj "C:/lscc/radiant/2.0"
+prj_run Export -impl impl_1
+prj_set_strategy_value -strategy Strategy1 par_spd_hld_opt=High-Performance_1.2V par_spd_setup_opt=High-Performance_1.2V par_core_number=8 par_place_iterator=4
+prj_set_strategy_value -strategy Strategy1 lse_frequency=16
+prj_set_strategy_value -strategy Strategy1 syn_frequency=16
+prj_set_strategy_value -strategy Strategy1 syn_area=True
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_set_strategy_value -strategy Strategy1 lse_opt_goal=Timing
+prj_set_strategy_value -strategy Strategy1 syn_area=False
+prj_run Export -impl impl_1
+prj_set_strategy_value -strategy Strategy1 syn_res_sharing=False
+prj_set_strategy_value -strategy Strategy1 lse_res_sharing=False
+prj_run Export -impl impl_1
+prj_run Map -impl impl_1
+prj_run Export -impl impl_1
+prj_set_strategy_value -strategy Strategy1 lse_res_sharing=True lse_opt_goal=Area
+prj_set_strategy_value -strategy Strategy1 syn_area=True syn_res_sharing=True
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Export -impl impl_1
+prj_run Map -impl impl_1
+prj_run Export -impl impl_1
+#Stop recording: 5/7/2020 18:44:08
+
+
+
+</PRE></DIV>
+
+<DIV id="toc" class="radiant"><span onmousemove="showTocList()">Contents</span>
+<UL id="toc_list">
+<LI><A href=#pn200507110731>pn200507110731</A></LI>
+<LI><A href=#pn200507184408>pn200507184408</A></LI>
+</UL>
+</DIV>
+
+<button id="back_to_top" class="radiant" onclick="scrollToTop()">&lt;</button>
+<script type="text/javascript">
+<!--
+var scrollStep = 0;
+function scrollToTop(){
+  var funScroll = function() {
+    var top = document.body.scrollTop;
+    if (top == 0) {
+      scrollStep = 0;
+      return;
+    }
+    if (scrollStep == 0)
+      scrollStep = top/20 + 1;
+    top -= scrollStep;
+    if (top < 0)
+      top = 0;
+    document.body.scrollTop = top;
+    requestAnimationFrame(funScroll);
+  };
+  funScroll();
+}
+
+window.addEventListener('scroll', function(e) {
+  var backToTop = document.getElementById('back_to_top')
+  if (document.body.scrollTop > 0) {
+    backToTop.style.display = 'block';
+  } else {	backToTop.style.display = 'none'  }});
+
+//-->
+</script>
+
+<style type="text/css">
+#back_to_top {
+  bottom:20px; right:20px;
+  width:30px; height:30px;
+  font-size: 20px;
+  padding: 2px 5px 2px 5px;
+  position:fixed;
+  background-color:rgba(210,210,210,0.1);
+  border-style: solid;
+  border-color: rgba(192,192,192,0.8);
+  border-width:1px;
+  display:none;
+  -webkit-transform: rotate(90deg);
+  -webkit-transform-origin:50% 50%;
+}
+#back_to_top:focus {
+  outline-width:0px;
+}
+</style>
+
+</BODY>
+

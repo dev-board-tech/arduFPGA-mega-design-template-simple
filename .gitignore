@@ -50,3 +50,8 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+arduFPGA_simple_template_design/arduFPGA_simple_template_tcr.dir/
+arduFPGA_simple_template_design/impl_1/
+*.log
+*.vs/

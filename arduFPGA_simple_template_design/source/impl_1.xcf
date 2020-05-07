@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE		ispXCF	SYSTEM	"IspXCF.dtd" >
+<ispXCF version="R1.2.0">
+	<Comment></Comment>
+	<Chain>
+		<Comm>SPI</Comm>
+		<Device>
+			<SelectedProg value="TRUE"/>
+			<Pos>1</Pos>
+			<Vendor>Macronix</Vendor>
+			<Family>SPI Serial Flash</Family>
+			<Name>MX25L3206E</Name>
+			<IDCode>0x00000016</IDCode>
+			<Package>16-pin SOP</Package>
+			<PON>MX25L3206EM</PON>
+			<Bypass>
+				<InstrLen>8</InstrLen>
+				<InstrVal>11111111</InstrVal>
+				<BScanLen>1</BScanLen>
+				<BScanVal>0</BScanVal>
+			</Bypass>
+			<File>../../impl_1/arduFPGA_simple_template_impl_1.bin</File>
+			<FileTime>05/07/20 19:51:08</FileTime>
+			<MemoryType>External SPI Flash Memory (SPI FLASH)</MemoryType>
+			<Operation>Erase,Program,Verify</Operation>
+			<Option>
+				<SVFVendor>JTAG STANDARD</SVFVendor>
+				<IOState>HighZ</IOState>
+				<AccessMode>Direct Programming</AccessMode>
+			</Option>
+			<FPGALoader>
+			<FlashDevice>
+				<Device>
+					<Pos>1</Pos>
+					<Vendor>Macronix</Vendor>
+					<Family>SPI Serial Flash</Family>
+					<Name>MX25L3206E</Name>
+					<Package>16-pin SOP</Package>
+					<Operation>Erase,Program,Verify</Operation>
+					<File>../../impl_1/arduFPGA_simple_template_impl_1.bin</File>
+					<AddressBase>0x00000000</AddressBase>
+					<EndAddress>0x00010000</EndAddress>
+					<DeviceSize>0</DeviceSize>
+					<DataSize>104156</DataSize>
+					<NumberOfDevices>1</NumberOfDevices>
+					<ReInitialize value="FALSE"/>
+				</Device>
+			</FlashDevice>
+			</FPGALoader>
+		</Device>
+	</Chain>
+	<ProjectOptions>
+		<Program>SEQUENTIAL</Program>
+		<Process>ENTIRED CHAIN</Process>
+		<OperationOverride>No Override</OperationOverride>
+		<StartTAP>TLR</StartTAP>
+		<EndTAP>TLR</EndTAP>
+		<VerifyUsercode value="FALSE"/>
+		<TCKDelay>1</TCKDelay>
+	</ProjectOptions>
+	<CableOptions>
+		<CableName>USB2</CableName>
+		<PortAdd>FTUSB-0</PortAdd>
+	</CableOptions>
+</ispXCF>
