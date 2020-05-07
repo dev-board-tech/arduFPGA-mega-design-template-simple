@@ -123,7 +123,6 @@ static void delay_ms(uint32_t time)
   ec:	bf 4f       	sbci	r27, 0xFF	; 255
 	sei();
   ee:	78 94       	sei
-	//uint32_t rtc_cnt_int;
 	while(1) {
 		if(tim_cnt > time_to_tick)
   f0:	40 91 00 01 	lds	r20, 0x0100	; 0x800100 <_edata>
@@ -135,24 +134,21 @@ static void delay_ms(uint32_t time)
  104:	a6 07       	cpc	r26, r22
  106:	b7 07       	cpc	r27, r23
  108:	98 f7       	brcc	.-26     	; 0xf0 <delay_ms.constprop.0+0x1c>
+			return;
 	}
-	/*do
-	{
-		rtc_cnt_int = tim_cnt;
-	} while (time_to_tick > rtc_cnt_int);*/
 }
  10a:	08 95       	ret
 
 0000010c <main>:
-
 int main(void)
 {
     // In this example the design use a handwritten RTC as TIMER0 overflow interrupt, so we do not need to initialize the TIMER.
-	// As soon as we enable the interrupts the core will receive them.
+	// If you use arduino, even if arduino IDE initialize TIMER0, will have no effect.
+	// As soon as we enable the interrupts the core will receive interrupts from TIMER0 overflow.
 	DDRB = (LED_B | LED_G | LED_R); // Activate the outputs for LED pins.
  10c:	87 e0       	ldi	r24, 0x07	; 7
  10e:	84 b9       	out	0x04, r24	; 4
-	// We can not set up PULL UP's from software for the inputs, PULL UPs on iCE40UP device are set up from the design.
+	// We can not set up PULL UP's from software for the inputs, PULL UP's on iCE40UP device are set up from the design.
 	sei();
  110:	78 94       	sei
 	PORTB = LED_R;
@@ -206,8 +202,8 @@ int main(void)
  142:	20 f4       	brcc	.+8      	; 0x14c <main+0x40>
  144:	c1 30       	cpi	r28, 0x01	; 1
  146:	89 f0       	breq	.+34     	; 0x16a <main+0x5e>
-		rtc_cnt_int = tim_cnt;
-	} while (time_to_tick > rtc_cnt_int);*/
+			return;
+	}
 }
 
 int main(void)
@@ -266,11 +262,11 @@ int main(void)
  174:	e9 cf       	rjmp	.-46     	; 0x148 <main+0x3c>
 
 00000176 <__vector_23>:
-			tmp_keys_old = tmp_keys;
 		}
     }
 }
 
+// Interrupt service routine.
 ISR(TIMER0_OVF_vect) {
  176:	1f 92       	push	r1
  178:	0f 92       	push	r0
