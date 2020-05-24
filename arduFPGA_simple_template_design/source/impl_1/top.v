@@ -20,6 +20,9 @@
 
 `timescale 1ns / 1ps
 
+`define PLATFORM				"iCE40UP"
+`define FLASH_ROM_FILE_NAME		"simple_app"
+
 module top (
 	input clk,
 	output RGB0, 
@@ -51,8 +54,8 @@ PLL_DEV PLL_inst(
 
 /* CORE Instance */
 core # (
-	.PLATFORM("iCE40UP"),
-	.ROM_PATH("simple_app")
+	.PLATFORM(`PLATFORM),
+	.ROM_PATH(`FLASH_ROM_FILE_NAME)
 )core_instance(
 	.core_rst(sys_rst),
 	.core_clk(sys_clk),

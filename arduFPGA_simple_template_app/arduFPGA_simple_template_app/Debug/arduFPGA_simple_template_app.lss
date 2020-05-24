@@ -23,11 +23,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  00000064  00000000  00000000  00001bf4  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000052d  00000000  00000000  00001c58  2**0
+ 10 .debug_str    00000529  00000000  00000000  00001c58  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000098  00000000  00000000  00002185  2**0
+ 11 .debug_loc    00000098  00000000  00000000  00002181  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000038  00000000  00000000  0000221d  2**0
+ 12 .debug_ranges 00000038  00000000  00000000  00002219  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -168,7 +168,7 @@ int main(void)
  126:	0e 94 6a 00 	call	0xd4	; 0xd4 <delay_ms.constprop.0>
 	PORTB = 0;
  12a:	15 b8       	out	0x05, r1	; 5
-	uint8_t tmp_keys_old = 0;
+	uint8_t old_keys = 0;
  12c:	80 e0       	ldi	r24, 0x00	; 0
 					break;
 				case 0b00000010: // BTN_BACK
@@ -184,7 +184,7 @@ int main(void)
 					delay_ms(1000);
 					PORTB = LED_G;
  132:	02 e0       	ldi	r16, 0x02	; 2
-	uint8_t tmp_keys_old = 0;
+	uint8_t old_keys = 0;
     while (1) 
     {
 		 // The advantage of the FPGA is that on the same IO PORT we can use outputs separate from the inputs.
@@ -193,7 +193,7 @@ int main(void)
  134:	c3 b1       	in	r28, 0x03	; 3
  136:	c0 95       	com	r28
  138:	cf 71       	andi	r28, 0x1F	; 31
-		if(tmp_keys_old != tmp_keys) {
+		if(old_keys != tmp_keys) {
  13a:	8c 17       	cp	r24, r28
  13c:	d9 f3       	breq	.-10     	; 0x134 <main+0x28>
 			switch(tmp_keys) {
@@ -214,7 +214,7 @@ int main(void)
 		 // The advantage of the FPGA is that on the same IO PORT we can use outputs separate from the inputs.
 		 // In this case for keyboard we use inputs 5:0, and for LED's we use outputs 2:0 of the same IO PORT, so, pins 2:0 has dual function.
 		uint8_t tmp_keys = (~PINB) & 0b00011111; // Inverse the inputs from PORTB and filter them, the common for keyboard is logic 0.
-		if(tmp_keys_old != tmp_keys) {
+		if(old_keys != tmp_keys) {
 			switch(tmp_keys) {
  14c:	c4 30       	cpi	r28, 0x04	; 4
  14e:	89 f0       	breq	.+34     	; 0x172 <main+0x66>
@@ -243,7 +243,7 @@ int main(void)
  168:	ef cf       	rjmp	.-34     	; 0x148 <main+0x3c>
 		 // In this case for keyboard we use inputs 5:0, and for LED's we use outputs 2:0 of the same IO PORT, so, pins 2:0 has dual function.
 		uint8_t tmp_keys = (~PINB) & 0b00011111; // Inverse the inputs from PORTB and filter them, the common for keyboard is logic 0.
-		if(tmp_keys_old != tmp_keys) {
+		if(old_keys != tmp_keys) {
 			switch(tmp_keys) {
 				case 0b00000001: // BTN_OK
 					PORTB = LED_R;
